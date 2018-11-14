@@ -58,8 +58,8 @@ public class RecipeResponse implements Parcelable {
     private RecipeResponse(Parcel in) {
         this.id = ((int) in.readValue((int.class.getClassLoader())));
         this.name = ((String) in.readValue((String.class.getClassLoader())));
-        ingredients = new ArrayList<Ingredient>();
-        steps = new ArrayList<Step>();
+        ingredients = new ArrayList<>();
+        steps = new ArrayList<>();
         in.readList(this.ingredients, (Ingredient.class.getClassLoader()));
         in.readList(this.steps, (Step.class.getClassLoader()));
         this.servings = ((int) in.readValue((int.class.getClassLoader())));

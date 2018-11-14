@@ -21,7 +21,6 @@ public class MainActivityViewModel extends AndroidViewModel {
         FoodRepository repository = InjectorUtil.provideRepository(application.getApplicationContext());
         recipeLiveData = repository.getRecipeList();
     }
-
     LiveData<List<RecipeResponse>> getRecipeLiveData() {
         return recipeLiveData;
     }

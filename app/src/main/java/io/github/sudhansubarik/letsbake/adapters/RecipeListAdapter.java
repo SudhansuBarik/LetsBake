@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import io.github.sudhansubarik.letsbake.R;
 import io.github.sudhansubarik.letsbake.room.RecipeResponse;
 
@@ -17,7 +19,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.My
     private final Context context;
     private final ItemClickListener listener;
     private List<RecipeResponse> recipeResponseList;
-
 
     public RecipeListAdapter(Context context, ItemClickListener listener) {
         this.context = context;
@@ -29,7 +30,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.My
         recipeResponseList = recipes;
         notifyDataSetChanged();
     }
-
 
     @NonNull
     @Override
@@ -57,7 +57,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.My
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             recipeName = itemView.findViewById(R.id.list_recipe_name);
             servings = itemView.findViewById(R.id.list_recipe_servings);
             itemView.setOnClickListener(this);

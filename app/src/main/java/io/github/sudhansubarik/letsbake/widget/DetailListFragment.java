@@ -37,7 +37,6 @@ public class DetailListFragment extends Fragment {
     @BindView(R.id.recipe_ingredients_textView)
     TextView ingredientsView;
     private Context context;
-    private RecipeStepAdapter adapter;
 
     private OnDetailListListener mListener;
 
@@ -62,7 +61,7 @@ public class DetailListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_step_list, container, false);
@@ -80,7 +79,7 @@ public class DetailListFragment extends Fragment {
     }
 
     private void initRecyclerView() {
-        adapter = new RecipeStepAdapter(context, new RecipeStepAdapter.StepClickListener() {
+        RecipeStepAdapter adapter = new RecipeStepAdapter(context, new RecipeStepAdapter.StepClickListener() {
             @Override
             public void onItemClick(Step step) {
                 mListener.onFragmentInteraction(step);
@@ -100,7 +99,7 @@ public class DetailListFragment extends Fragment {
         if (context instanceof OnDetailListListener) {
             mListener = (OnDetailListListener) context;
         } else {
-            throw new RuntimeException(context.toString() + " must implement OnDetailListListener");
+            throw new RuntimeException(context.toString() + getString(R.string.implement_OnDetailListener_exception));
         }
     }
 

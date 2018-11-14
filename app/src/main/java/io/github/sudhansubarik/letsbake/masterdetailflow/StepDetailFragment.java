@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.widget.CardView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +34,8 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -102,7 +103,7 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
         // check for tablet or phone
         isTwoPane = getResources().getBoolean(R.bool.isTablet);
 
-        setTextAndImageViewValues();
+        setTextViewValues();
     }
 
     private void setVideoToExoplayer() {
@@ -128,20 +129,9 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
         }
     }
 
-    private void setTextAndImageViewValues() {
+    private void setTextViewValues() {
         // set description for step for selected recipe
         descriptionView.setText(step.getDescription());
-
-        // image url for selected step if available
-        String imageUrl = step.getThumbnailURL();
-        // step image to image view if not null else set is invisible
-        if (!TextUtils.isEmpty(imageUrl)) {
-            // Load and show Image
-//            Picasso.with(context)
-//                    .load(imageUrl)
-//                    .into(stepThumbnail);
-//            setViewVisibility(stepThumbnail, true);
-        }
     }
 
     @Override
@@ -151,19 +141,17 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private void hideUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            getActivity().getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE
-                            | View.SYSTEM_UI_FLAG_LOW_PROFILE
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            );
-        }
+        Objects.requireNonNull(getActivity()).getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE
+                        | View.SYSTEM_UI_FLAG_LOW_PROFILE
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        );
     }
 
     private void fullScreenView(SimpleExoPlayerView exoPlayer) {

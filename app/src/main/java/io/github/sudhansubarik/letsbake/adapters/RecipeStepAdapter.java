@@ -3,14 +3,14 @@ package io.github.sudhansubarik.letsbake.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import io.github.sudhansubarik.letsbake.R;
 import io.github.sudhansubarik.letsbake.room.Step;
 
@@ -30,7 +30,6 @@ public class RecipeStepAdapter extends RecyclerView.Adapter<RecipeStepAdapter.My
         notifyDataSetChanged();
     }
 
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,9 +41,6 @@ public class RecipeStepAdapter extends RecyclerView.Adapter<RecipeStepAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
         holder.stepTextView.setText(stepList.get(i).getShortDescription());
-        if(TextUtils.isEmpty(stepList.get(i).getVideoURL())) {
-//            holder.playIcon.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -56,13 +52,10 @@ public class RecipeStepAdapter extends RecyclerView.Adapter<RecipeStepAdapter.My
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView stepTextView;
-        ImageView playIcon;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             stepTextView = itemView.findViewById(R.id.recipe_step_textView);
-//            playIcon = itemView.findViewById(R.id.item_step_video_icon);
             itemView.setOnClickListener(this);
         }
 
