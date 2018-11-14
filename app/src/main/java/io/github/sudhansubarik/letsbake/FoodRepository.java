@@ -28,8 +28,7 @@ public class FoodRepository implements RepositoryHelper {
             PrefHelper preferenceHelper) {
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = new FoodRepository(weatherNetworkDataSource,
-                        preferenceHelper);
+                sInstance = new FoodRepository(weatherNetworkDataSource, preferenceHelper);
             }
         }
         return sInstance;

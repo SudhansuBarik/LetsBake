@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import io.github.sudhansubarik.letsbake.R;
 import io.github.sudhansubarik.letsbake.FoodRepository;
+import io.github.sudhansubarik.letsbake.R;
 import io.github.sudhansubarik.letsbake.main.MainActivity;
 import io.github.sudhansubarik.letsbake.utils.Constant;
 import io.github.sudhansubarik.letsbake.utils.InjectorUtil;
@@ -18,9 +18,9 @@ public class IngredientsWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        //CharSequence widgetText = context.getString(R.string.appwidget_text);
         FoodRepository repository = InjectorUtil.provideRepository(context);
         String text = repository.getCurrentRecipeIngredient();
+
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.ingredients_widget);
         views.setTextViewText(R.id.ingredient_widget_textView, text);

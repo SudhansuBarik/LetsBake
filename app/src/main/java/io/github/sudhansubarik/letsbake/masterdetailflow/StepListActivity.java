@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import io.github.sudhansubarik.letsbake.R;
 import io.github.sudhansubarik.letsbake.room.RecipeResponse;
 import io.github.sudhansubarik.letsbake.room.Step;
@@ -29,6 +31,24 @@ public class StepListActivity extends AppCompatActivity implements DetailListFra
         extractDataFromBundle();
     }
 
+    private void extractDataFromBundle() {
+        Intent intent = getIntent();
+        if (intent == null) {
+            closeOnError();
+        }
+        if (intent != null) {
+            Bundle data = intent.getExtras();
+            if (data != null) {
+                // set values on text
+                recipeResponse = data.getParcelable(Constant.EXTRA_KEY);
+                if (recipeResponse != null) {
+                    Objects.requireNonNull(getSupportActionBar()).setTitle(recipeResponse.getName());
+                    setUpUIForDifferentScreenSize();
+                }
+            }
+        }
+    }
+
     private void setUpUIForDifferentScreenSize() {
         if (isTwoPane) {
             Timber.d("tablet screen");
@@ -49,23 +69,6 @@ public class StepListActivity extends AppCompatActivity implements DetailListFra
                 .commit();
     }
 
-    private void extractDataFromBundle() {
-        Intent intent = getIntent();
-        if (intent == null) {
-            closeOnError();
-        }
-        if (intent != null) {
-            Bundle data = intent.getExtras();
-            if (data != null) {
-                // set values on text and images
-                recipeResponse = data.getParcelable(Constant.EXTRA_KEY);
-                if (recipeResponse != null) {
-                    setUpUIForDifferentScreenSize();
-                }
-
-            }
-        }
-    }
 
     private void closeOnError() {
         finish();
