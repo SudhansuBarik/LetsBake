@@ -25,7 +25,7 @@ public class NetworkDataSource {
         this.mutableRecipeData = new MutableLiveData<>();
     }
 
-    private void deserializeToJson(String response) {
+    public void deserializeToJson(String response) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         mutableRecipeData.setValue(Arrays.asList(gson.fromJson(response, RecipeResponse[].class)));
@@ -33,7 +33,6 @@ public class NetworkDataSource {
 
     private StringRequest getStringRequestForRecipe() {
         return new StringRequest(Request.Method.GET, Constant.RECIPE_URL,
-
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

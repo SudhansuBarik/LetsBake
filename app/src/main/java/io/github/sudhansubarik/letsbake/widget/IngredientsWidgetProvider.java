@@ -13,11 +13,12 @@ import io.github.sudhansubarik.letsbake.main.MainActivity;
 import io.github.sudhansubarik.letsbake.utils.Constant;
 import io.github.sudhansubarik.letsbake.utils.InjectorUtil;
 
-public class IngredientsWidget extends AppWidgetProvider {
+public class IngredientsWidgetProvider extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
+        //CharSequence widgetText = context.getString(R.string.appwidget_text);
         FoodRepository repository = InjectorUtil.provideRepository(context);
         String text = repository.getCurrentRecipeIngredient();
 
@@ -25,7 +26,7 @@ public class IngredientsWidget extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.ingredients_widget);
         views.setTextViewText(R.id.ingredient_widget_textView, text);
 
-        // Create an Intent to launch ExampleActivity
+        // Create an Intent to launch MainActivity
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, Constant.PENDING_INTENT_REQUEST_CODE, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -56,4 +57,3 @@ public class IngredientsWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 }
-

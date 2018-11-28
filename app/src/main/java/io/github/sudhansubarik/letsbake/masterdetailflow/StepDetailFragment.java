@@ -174,7 +174,6 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
             TrackSelector trackSelector = new DefaultTrackSelector();
             exoPlayer = ExoPlayerFactory.newSimpleInstance(context,
                     trackSelector, new DefaultLoadControl());
-            exoPlayer.seekTo(currentWindow, position);
             // setting player to the exo-playerView
             exoPlayerView.setPlayer(exoPlayer);
             // adding listeners, all functions are implemented
@@ -187,6 +186,7 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
             exoPlayer.prepare(mediaSource);
             exoPlayer.setPlayWhenReady(playWhenReady);
         }
+        exoPlayer.seekTo(currentWindow, position);
     }
 
     private void initializeMediaSession() {
@@ -267,7 +267,6 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
      * As our app can be visible but not active in split window mode,
      * we need to initialize the player in onStart.
      */
-
     @Override
     public void onStart() {
         super.onStart();

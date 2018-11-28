@@ -23,9 +23,8 @@ public class FoodRepository implements RepositoryHelper {
         this.preferenceHelper = preferenceHelper;
     }
 
-    public synchronized static FoodRepository getInstance(
-            NetworkDataSource weatherNetworkDataSource,
-            PrefHelper preferenceHelper) {
+    public synchronized static FoodRepository getInstance(NetworkDataSource weatherNetworkDataSource,
+                                                          PrefHelper preferenceHelper) {
         if (sInstance == null) {
             synchronized (LOCK) {
                 sInstance = new FoodRepository(weatherNetworkDataSource, preferenceHelper);

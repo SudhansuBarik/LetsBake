@@ -69,7 +69,6 @@ public class StepListActivity extends AppCompatActivity implements DetailListFra
                 .commit();
     }
 
-
     private void closeOnError() {
         finish();
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();

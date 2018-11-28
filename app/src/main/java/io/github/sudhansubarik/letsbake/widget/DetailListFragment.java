@@ -116,7 +116,6 @@ public class DetailListFragment extends Fragment {
     private void createAndSetIngredientList(List<Ingredient> ingredients) {
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(getString(R.string.label_ingredient_list));
 
         for (Ingredient ing : ingredients) {
             stringBuilder.append("\n");
@@ -133,10 +132,9 @@ public class DetailListFragment extends Fragment {
         if (getActivity() != null) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.ingredients_widget);
-            ComponentName componentName = new ComponentName(getActivity(), IngredientsWidget.class);
+            ComponentName componentName = new ComponentName(getActivity(), IngredientsWidgetProvider.class);
             remoteViews.setTextViewText(R.id.ingredient_widget_textView, stringBuilder);
             manager.updateAppWidget(componentName, remoteViews);
         }
     }
 }
-

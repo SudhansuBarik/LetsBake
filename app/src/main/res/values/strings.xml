@@ -2,11 +2,11 @@
     <string name="app_name">Let\'s Bake</string>
     <string name="detail_error_message">Something went wrong!</string>
     <string name="serving_label">Servings: %d</string>
-    <string name="label_ingredient_list">Ingredient List:</string>
     <string name="recipe_details_ingredient_line">
         <xliff:g id="bullet">\u2022</xliff:g> <xliff:g id="name">%s</xliff:g>
     (<xliff:g id="quantity">%s</xliff:g> <xliff:g id="measure">%s</xliff:g>)
     </string>
     <string name="recipe_image">recipe image</string>
     <string name="implement_OnDetailListener_exception">must implement OnDetailListListener</string>
+    <string name="empty_widget_text">Click here to Select a delicious Recipe</string>
 </resources>
