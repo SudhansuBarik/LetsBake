@@ -346,7 +346,8 @@ public class StepDetailFragment extends Fragment implements ExoPlayer.EventListe
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong(Constant.BUNDLE_KEY_CURRENT_POSITION, position);
+//        outState.putLong(Constant.BUNDLE_KEY_CURRENT_POSITION, position);
+        outState.putLong(Constant.BUNDLE_KEY_CURRENT_POSITION, exoPlayer.getCurrentPosition());
         outState.putInt(Constant.BUNDLE_KEY_CURRENT_WINDOW, currentWindow);
         outState.putBoolean(Constant.BUNDLE_KEY_PLAY_WHEN_READY, playWhenReady);
     }
